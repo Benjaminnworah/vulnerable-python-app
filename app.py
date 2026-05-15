@@ -1,9 +1,14 @@
 import os
+import subprocess
 
-password = "SuperSecretPassword123"
+allowed_commands = ["date", "uptime"]
 
 user_input = input("Enter command: ")
 
-os.system(user_input)
+if user_input in allowed_commands:
+    subprocess.run(user_input.split())
+else:
+    print("Command not allowed")
 
-print("This is a test")
+password = os.getenv("APP_PASSWORD")
+
